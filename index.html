@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sərfəli Kredit Təklifi</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 500px;
+        background: rgba(0, 0, 0, 0.25);
+        padding: 30px 20px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        font-size: 2em;
+        color: #ffe600;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px #00000055;
+      }
+
+      p {
+        font-size: 1.1em;
+        color: #ffffffdd;
+        margin-bottom: 25px;
+        line-height: 1.4em;
+      }
+
+      .bonus {
+        background: linear-gradient(90deg, #ff512f, #dd2476);
+        color: #fff;
+        padding: 18px 15px;
+        border-radius: 20px;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: inline-block;
+        animation: pulse 1.5s infinite;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .btn {
+        display: block;
+        width: 80%;
+        max-width: 300px;
+        margin: 10px auto;
+        background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+        color: #fff;
+        padding: 15px 20px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 20px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Confetti */
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: -10px;
+        opacity: 0.8;
+        border-radius: 50%;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          transform: translateY(700px) rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎉 Sərfəli Kredit – 25,000 AZN-dək! 🎉</h1>
+      <p>
+        Sadəcə 3 dəqiqədə kredit! Hər kəs müraciət edə bilər.<br />
+        <strong>Bütün bank kartları qəbul olunur, gecikmələrə baxılmır!</strong>
+      </p>
+
+      <div class="bonus">
+        WhatsApp ilə 5 nəfərə paylaş, sizə 50 AZN əlavə kredit veriləcək!
+      </div>
+
+      <a
+        href="https://api.whatsapp.com/send?text=25%2C000%20AZN-d%C9%99k%20s%C9%99rf%C9%99li%20kredit%20t%C9%99klifi%20-%20https%3A%2F%2Fexample.com"
+        target="_blank"
+        class="btn"
+        >WhatsApp ilə Paylaş</a
+      >
+
+      <a href="kredit-form.html" class="btn">Kredit üçün Müraciət et</a>
+    </div>
+
+    <script>
+      // Confetti generator
+      for (let i = 0; i < 50; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.backgroundColor = `hsl(${
+          Math.random() * 360
+        }, 80%, 60%)`;
+        confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
+        confetti.style.width = confetti.style.height =
+          5 + Math.random() * 10 + "px";
+        confetti.style.animation = `fall ${
+          2 + Math.random() * 3
+        }s linear infinite`;
+        document.body.appendChild(confetti);
+      }
+    </script>
+  </body>
+</html>

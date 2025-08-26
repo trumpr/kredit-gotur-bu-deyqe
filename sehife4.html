@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kredit Məlumatı</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+        text-align: center;
+      }
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+      button {
+        padding: 15px 30px;
+        font-size: 1em;
+        border: none;
+        border-radius: 20px;
+        background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Təbrik edirik!</h1>
+    <p>Sizə kredit ayıra bilərik. Xahiş edirik, operatora yazın.</p>
+    <button id="openChat">Operatora Yaz</button>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/68ad6b379dfb481927183a8f/1j3imlkns";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <script>
+      document
+        .getElementById("openChat")
+        .addEventListener("click", function () {
+          if (Tawk_API && Tawk_API.toggle) {
+            Tawk_API.toggle(); // Chat pəncərəsini açır/qapadır
+          } else {
+            alert(
+              "Chat hələ yüklənməyib, zəhmət olmasa bir neçə saniyə gözləyin."
+            );
+          }
+        });
+    </script>
+  </body>
+</html>

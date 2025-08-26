@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fikir Səhifəsi</title>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #f6d365, #fda085);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+
+      /* Spinner stili */
+      .spinner {
+        border: 8px solid rgba(255, 255, 255, 0.3);
+        border-top: 8px solid #fff;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      #countdown {
+        font-size: 1.5em;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hörmətli Müştəri!</h1>
+    <p>Xahiş edirik bir qədər gözləyin, məlumatlar araşdırılır…</p>
+    <div class="spinner"></div>
+    <div id="countdown">30</div>
+
+    <script>
+      let timeLeft = 30;
+      const countdownEl = document.getElementById("countdown");
+
+      // Hər saniyə geri say
+      const timer = setInterval(() => {
+        timeLeft--;
+        countdownEl.innerText = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          window.location.href = "sehife4.html";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
